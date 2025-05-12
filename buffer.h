@@ -22,6 +22,8 @@ bool buffer_eof(void);
 
 int buffer_back_char(void);
 
+int buffer_peek_next_char(char& c);
+
 int buffer_cleanup(void);
 
 int get_src_line(int line_no, string& line);

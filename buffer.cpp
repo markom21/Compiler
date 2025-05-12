@@ -25,6 +25,8 @@ int buffer_init(const char* filename)
 		return -2;
 	}
 
+
+
 	file.close();
 	return 0;
 }
@@ -33,6 +35,7 @@ int buffer_get_cur_char(char& c)
 {
 	if (buffer_eof())
 	{
+		c = '\0';
 		return -1;
 	}
 	c = buffer[current_pos];
@@ -49,7 +52,7 @@ int buffer_next_char(void)
 	if (c == '\n')
 	{
 		src_line_no++;
-		src_col_no = 0;
+		src_col_no = 1;
 	}
 	else
 	{
@@ -63,12 +66,13 @@ int buffer_get_next_char(char& c)
 {
 	if (buffer_eof())
 	{
+		c = '\0';
 		return -1;
 	}
 	c = buffer[current_pos];
-	int result = buffer_next_char();
-	return result;
+	return buffer_next_char();
 }
+
 
 bool buffer_eof(void)
 {
@@ -77,7 +81,7 @@ bool buffer_eof(void)
 
 int buffer_back_char(void)
 {
-	if (current_pos > 0)
+	if (current_pos == 0)
 	{
 		return -1;
 	}
@@ -92,6 +96,17 @@ int buffer_back_char(void)
 	{
 		src_col_no--;
 	}
+	return 0;
+}
+
+int buffer_peek_next_char(char& c)
+{
+	if (current_pos >= buffer.size())
+	{
+		c = '\0';
+		return -1;
+	}
+	c = buffer[current_pos];
 	return 0;
 }
 

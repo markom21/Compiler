@@ -44,6 +44,13 @@ void print_token(const Token& t)
         case TOKEN_COMMA: cout << "TOKEN_COMMA"; break;
         case TOKEN_REAL: cout << "TOKEN_REAL"; break;
         case TOKEN_COMMENT: break;
+        case TOKEN_IF: cout << "TOKEN_IF"; break;
+        case TOKEN_ELSE: cout << "TOKEN_ELSE"; break;
+        case TOKEN_WHILE: cout << "TOKEN_WHILE"; break;
+        case TOKEN_PRINT: cout << "TOKEN_PRINT"; break;
+        case TOKEN_READ: cout << "TOKEN_READ"; break;
+        case TOKEN_BLOCK: cout << "TOKEN_BLOCK"; break;
+        case TOKEN_INT4: cout << "TOKEN_INT4"; break;
         default: cout << "UNKNOWN_TOKEN"; break;
     }
     if (t.id == TOKEN_COMMENT)
